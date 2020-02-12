@@ -2,66 +2,14 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: [{
-    row: 0,
-    col: 0,
-    isMine: true,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 0,
-    col: 1,
-    isMine: false,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 0,
-    col: 2,
-    isMine: true,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 1,
-    col: 0,
-    isMine: false,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 1,
-    col: 1,
-    isMine: false,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 1,
-    col: 2,
-    isMine: false,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 2,
-    col: 0,
-    isMine: true,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 2,
-    col: 1,
-    isMine: true,
-    isMarked: false,
-    hidden: true
-  }, {
-    row: 2,
-    col: 2,
-    isMine: false,
-    isMarked: false,
-    hidden: true
-  }]
+
 }
 
 function startGame() {
   document.addEventListener("click", checkForWin)
   document.addEventListener("contextmenu", checkForWin)
+
+  generateBoard(6)
 
   for (let i = 0; i < board.cells.length; i++) {
     board.cells[i]["surroundingMines"] = countSurroundingMines(board.cells[i])
@@ -75,6 +23,39 @@ function startGame() {
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
+
+function generateBoard(num) {
+
+  board["cells"] = []
+  let row = 0
+  let col = 0
+  let squares = num*num
+
+  for (let i = 0; i < squares; i++) {
+    board.cells[i] = {
+      row: row,
+      col: col,
+      isMine: false,
+      isMarked: false,
+      hidden: true
+    }
+    if (row < num-1) {
+      row += 1
+    } else {
+      row = 0
+      col += 1
+    }
+  }
+
+  //Randomly generates mine positions
+  for (let i = 0; i < num; i++) {
+    cell = Math.floor((Math.random() * squares))
+    console.log(cell)
+    board.cells[cell].isMine = true
+  }
+}
+
+
 function checkForWin() {
 
   let winCondition = 0
@@ -120,6 +101,5 @@ function countSurroundingMines(cell) {
 
   return count
 
-
-
 }
+
