@@ -10,24 +10,28 @@ function startGame() {
   //Click listeners
   document.addEventListener("click", checkForWin)
   document.addEventListener("contextmenu", checkForWin)
+  document.addEventListener("contextmenu", mineCounter)
 
   //Reset button listener
   document.getElementById('reset').addEventListener("click", boardReset)
 
   //Radio button listener
   let radios = document.getElementsByName('grid-size')
-  for(let i = 0; i < radios.length; i++) {
+  for (let i = 0; i < radios.length; i++) {
     radios[i].addEventListener("click", boardReset)
   }
 
   //Checks grid-size selection
   let size = document.querySelector('input[name="grid-size"]:checked').value;
 
-  generateBoard(size)
+  generateBoard(Number(size))
 
   for (let i = 0; i < board.cells.length; i++) {
     board.cells[i]["surroundingMines"] = countSurroundingMines(board.cells[i])
   }
+
+  //Finds number of mines and updates UI counter
+  mineCounter()
 
   //Game initialiser
   lib.initBoard()
@@ -56,8 +60,10 @@ function generateBoard(num) {
     }
   }
 
-  //Randomly generates mine positions
-  for (let i = 0; i < num; i++) {
+  //Randomly generates mine numbers and positions
+  let variance = Math.ceil(num + (num * 0.33))
+
+  for (let i = 0; i < variance; i++) {
     cell = Math.floor((Math.random() * squares))
     board.cells[cell].isMine = true
   }
@@ -94,6 +100,23 @@ function countSurroundingMines(cell) {
   }
 
   return count
+}
+
+function mineCounter() {
+  let mines = 0
+  let marked = 0
+
+  for (let i = 0; i < board.cells.length; i++) {
+    if (board.cells[i].isMine) {
+      mines += 1
+    }
+    if (board.cells[i].isMarked) {
+      marked += 1
+    }
+  }
+
+  document.getElementById('mine-count').innerHTML = '<p>' + (mines - marked + " Mines Remaining") + '</p>'
+
 }
 
 //reset board to defaults
