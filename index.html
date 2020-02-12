@@ -14,8 +14,17 @@
   <div id="notes"></div>
   <div class="board" id="grid"></div>
   <div class="controls">
-
-    <button id="reset" type="button" onclick="boardReset()">Reset</button>
+    <form class="radio-container">
+      <input type="radio" id="3x3" name="grid-size" value="3">
+      <label for="3x3">3 x 3</label>
+      <input type="radio" id="4x4" name="grid-size" value="4" checked="checked">
+      <label for="4x4">4 x 4</label>
+      <input type="radio" id="5x5" name="grid-size" value="5">
+      <label for="5x5">5 x 5</label>
+      <input type="radio" id="6x6" name="grid-size" value="6">
+      <label for="6x6">6 x 6</label>
+    </form>
+    <button id="reset" type="button">Reset</button>
   </div>
 
 </body>
