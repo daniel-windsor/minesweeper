@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Open Sans', sans-serif
 }
@@ -10,7 +11,8 @@ body {
   flex-direction: column;
 }
 
-#message, #notes {
+#message,
+#notes {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +51,8 @@ body {
   background-color: white;
 }
 
-div.mine, div.mine:hover {
+div.mine,
+div.mine:hover {
   background: no-repeat center/60% url("images/bomb.svg") crimson;
 }
 
@@ -61,6 +64,24 @@ div.hidden:hover {
   background: #ccc;
 }
 
-div.marked, div.marked:hover {
+div.marked,
+div.marked:hover {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px #ccc dotted;
+  border-radius: 10px;
+  background-color: white;
+  margin: 30px;
+  padding: 20px;
+}
+
+.radio-container{
+  padding: 10px;
+  margin-right: 20px;
 }
