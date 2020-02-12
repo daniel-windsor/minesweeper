@@ -50,7 +50,6 @@ function generateBoard(num) {
   //Randomly generates mine positions
   for (let i = 0; i < num; i++) {
     cell = Math.floor((Math.random() * squares))
-    console.log(cell)
     board.cells[cell].isMine = true
   }
 }
@@ -103,3 +102,8 @@ function countSurroundingMines(cell) {
 
 }
 
+//resets board to defaults
+function boardReset() {
+  document.getElementById('grid').innerHTML = ""
+  startGame()
+}

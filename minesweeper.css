@@ -20,6 +20,12 @@ body {
   font-size: 1.5rem;
 }
 
+#reset {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: large;
+}
+
 .board {
   display: flex;
   flex-wrap: wrap;
