@@ -7,8 +7,9 @@ body {
 body {
   display: flex;
   align-items: center;
-  justify-content: flex-center;
+  justify-content: flex-start;
   flex-direction: column;
+  background-color: #ebefff;
 }
 
 #message,
@@ -34,11 +35,11 @@ body {
 }
 
 .board div {
-  color: green;
+  color: black;
   font-size: 2rem;
   width: 75px;
   height: 75px;
-  border: 1px #ccc dotted;
+  border: 1px #9eb5ff solid;
   border-radius: 10%;
   background-color: white;
   margin: 3px;
@@ -53,20 +54,20 @@ body {
 
 div.mine,
 div.mine:hover {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+  background: no-repeat center/80% url("images/skull.png") #ff85a2;
 }
 
 div.hidden {
-  background: #eee;
+  background: #8582ff;
 }
 
 div.hidden:hover {
-  background: #ccc;
+  background: #b8c9ff;
 }
 
 div.marked,
 div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/60% url("images/mark.svg") #85dfff;
 }
 
 .controls {
@@ -84,4 +85,12 @@ div.marked:hover {
 .radio-container{
   padding: 10px;
   margin-right: 20px;
+}
+
+button {
+  color: white;
+  background-color: #8582ff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }

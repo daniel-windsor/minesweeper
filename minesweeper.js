@@ -22,9 +22,9 @@ function startGame() {
   }
 
   //Checks grid-size selection
-  let size = document.querySelector('input[name="grid-size"]:checked').value;
+  let size = Number(document.querySelector('input[name="grid-size"]:checked').value);
 
-  generateBoard(Number(size))
+  generateBoard(size)
 
   for (let i = 0; i < board.cells.length; i++) {
     board.cells[i]["surroundingMines"] = countSurroundingMines(board.cells[i])
@@ -115,12 +115,12 @@ function mineCounter() {
     }
   }
 
-  document.getElementById('mine-count').innerHTML = '<p>' + (mines - marked + " Mines Remaining") + '</p>'
+  document.getElementById('mine-count').innerHTML = '<p>' + (mines - marked + " Skulls Remaining") + '</p>'
 
 }
 
 //reset board to defaults
 function boardReset() {
-  document.getElementById('grid').innerHTML = ""
+  document.getElementsByClassName('board')[0].innerHTML = ""
   startGame()
 }
