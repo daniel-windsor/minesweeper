@@ -22,7 +22,7 @@ function startGame() {
   }
 
   //Checks grid-size selection
-  let size = Number(document.querySelector('input[name="grid-size"]:checked').value);
+  const size = Number(document.querySelector('input[name="grid-size"]:checked').value);
 
   generateBoard(size)
 
@@ -30,8 +30,17 @@ function startGame() {
     board.cells[i]["surroundingMines"] = countSurroundingMines(board.cells[i])
   }
 
+  //Adjust UI elements for board size
+  let ui = document.getElementsByClassName('ui-container')[0]
+  ui.style.width=(size * 84 + 'px')
+
   //Finds number of mines and updates UI counter
   mineCounter()
+
+  //Start timer
+  // let timer = setInterval(function () {
+  //   document.getElementById('timer').innerHTML = "Time: " + ++currentTime
+  // }, 1000)
 
   //Game initialiser
   lib.initBoard()
@@ -84,6 +93,7 @@ function checkForWin() {
 
   if (winCondition == board.cells.length) {
     lib.displayMessage('You win!')
+    // clearInterval(timer)
   }
 }
 
@@ -122,5 +132,6 @@ function mineCounter() {
 //reset board to defaults
 function boardReset() {
   document.getElementsByClassName('board')[0].innerHTML = ""
+  // clearInterval(timer)
   startGame()
 }
