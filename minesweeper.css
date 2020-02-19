@@ -31,6 +31,26 @@ body {
   font-size: large;
 }
 
+#toBlog {
+  position: relative;
+  left: 40vw;
+  font-family: 'Ribeye',
+    cursive;
+  font-size: 30px;
+  color: black;
+  background-color: #ffd1dc;
+  border: 3px solid black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+#toBlog:hover {
+  transform: scale(1.1) perspective(10px);
+  transition: all 200ms ease-out;
+}
+
 .ui-container {
   display: flex;
   flex-direction: row;
